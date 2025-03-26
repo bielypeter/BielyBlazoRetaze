@@ -1,0 +1,120 @@
+:root { 
+    --page-padding: 0.5rem;
+    --border-radius: 0.5rem;
+    --header-height: 6rem;
+    --sideabar-width: 10rem;
+
+    /* COLORS */
+    --color-green: hsl(74, 32%, 52%);
+    --color-dark-green: hsl(88, 38%, 15%);
+    --color-beige: hsl(52, 94%, 94%);
+    --color-light-brown: hsl(32, 65%, 72%);
+    --color-brown: hsl(28, 67%, 56%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    display: grid;
+    gap: 4rem;
+    padding-top: calc(var(--header-height) + 1rem);
+    padding-left: calc(var(--sideabar-width) + 1rem);
+}
+
+.search { 
+    height: 1rem;
+    width: 25%;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.header { 
+    display: flex;
+    padding: var(--page-padding);
+    justify-content: space-between;
+    background-color: white;
+    height: var(--header-height);
+    width: 100%;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 10;
+    background-color: var(--color-green);
+}
+
+.logo { 
+    display: flex;
+    width: 5rem;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.logout-button { 
+    padding: 0.5rem; 
+    border-radius: var(--border-radius);
+    background-color: white;
+}
+
+.sidebar { 
+    background-color: var(--color-light-brown);
+    width: var(--sideabar-width);   
+    height: 100%;
+    padding-top: calc(var(--header-height) + 1rem);
+    position:  fixed;
+}
+
+.categories { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.category { 
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.images { 
+    display: grid;
+    gap: 2rem;
+}
+
+.list-image { 
+    width: 12rem;
+    height: auto;
+    margin: auto;
+    border-radius: var(--border-radius);
+}
+
+.banner { 
+    height: 14rem;
+    width: auto;
+    border-radius: var(--border-radius);
+}
+
+.banner-wrapper { 
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .images {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .images {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
