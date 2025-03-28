@@ -5,13 +5,13 @@
   --sideabar-width: 10rem;
 
   /* COLORS */
-  --color-light-green: hsl(74, 32%, 72%);
-  --color-green: hsl(74, 32%, 56%);
-  --color-dark-green: hsl(88, 38%, 34%);
-  --color-beige: hsl(52, 94%, 94%);
-  --color-light-brown: hsl(32, 65%, 72%);
-  --color-brown: hsl(28, 67%, 56%);
-  --color-dark-brown: hsl(28, 67%, 34%);
+  --color-light-green: hsl(239, 62%, 80%);
+  --color-green: hsl(239, 62%, 70%);
+  --color-dark-green: hsl(239, 62%, 60%);
+  --color-beige: hsl(268, 70%, 80%);
+  --color-light-brown: hsl(268, 70%, 70%);
+  --color-brown: hsl(268, 70%, 60%);
+  --color-dark-brown: hsl(268, 70%, 50%);
 }
 
 * {
@@ -55,7 +55,8 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   z-index: 10;
-  background-color: var(--color-green);
+  background: linear-gradient(90deg, var(--color-dark-green), var(--color-green));
+  color: white;
 }
 
 .logo {
@@ -131,7 +132,7 @@ a {
 }
 
 .sidebar {
-  background-color: var(--color-light-brown);
+  background: linear-gradient(var(--color-beige), var(--color-light-brown));
   width: 100%;
   height: 100%;
   padding-top: calc(var(--header-height) + 1rem);
@@ -278,6 +279,7 @@ a {
   }
   
   .banner { 
-    width: auto;
+    height: auto;
+    width: 65rem;
   }
 }
