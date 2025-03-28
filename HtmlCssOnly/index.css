@@ -178,7 +178,36 @@ a {
 
 .images {
   display: grid;
-  gap: 2rem;
+  justify-self: center;
+  gap: 6rem;
+}
+
+.product { 
+  display: grid;
+  gap: 0.5rem;
+  box-shadow: 0.5rem 0.75rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.product img { 
+  width: 15rem;
+  height: auto;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.info-wrapper { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+}
+
+.info-wrapper span { 
+  display: grid;
+  gap: 0.5rem;
 }
 
 .list-image {
@@ -186,6 +215,8 @@ a {
   height: auto;
   margin: auto;
   border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
 }
 
 .banner {
@@ -225,7 +256,8 @@ a {
   }
 
   .banner {
-    height: 14rem;
+    height: auto;
+    width: 40rem;
   }
   .main-content {
     display: grid;
