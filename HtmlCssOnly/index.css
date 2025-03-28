@@ -5,13 +5,13 @@
   --sideabar-width: 10rem;
 
   /* COLORS */
-  --color-light-green: hsl(239, 62%, 80%);
-  --color-green: hsl(239, 62%, 70%);
-  --color-dark-green: hsl(239, 62%, 60%);
-  --color-beige: hsl(268, 70%, 80%);
-  --color-light-brown: hsl(268, 70%, 70%);
-  --color-brown: hsl(268, 70%, 60%);
-  --color-dark-brown: hsl(268, 70%, 50%);
+  --color-light-green: hsl(240, 70%, 80%);
+  --color-green: hsl(245, 70%, 70%);
+  --color-dark-green: hsl(250, 70%, 60%);
+  --color-beige: hsl(255, 70%, 75%);
+  --color-light-brown: hsl(260, 70%, 70%);
+  --color-brown: hsl(265, 70%, 65%);
+  --color-dark-brown: hsl(270, 70%, 60%);
 }
 
 * {
@@ -52,10 +52,10 @@ a {
   height: var(--header-height);
   width: 100%;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
   position: fixed;
   z-index: 10;
-  background: linear-gradient(90deg, var(--color-dark-green), var(--color-green));
+  background: linear-gradient(90deg, var(--color-light-green), var(--color-dark-green));
   color: white;
 }
 
@@ -156,7 +156,7 @@ a {
   padding: 0.75rem 1.5rem;
   font-size: 0.75rem;
   text-align: center;
-  background-color: var(--color-green);
+  background-color: var(--color-dark-green);
   color: white;
   border: none;
   border-radius: var(--border-radius);
@@ -173,7 +173,7 @@ a {
 }
 
 .category-button:active {
-  background-color: var(--color-dark-green);
+  background-color: var(--color-green);
   transform: translateY(1px);
 }
 

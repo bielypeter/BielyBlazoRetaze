@@ -2,6 +2,8 @@
   display: grid;
   justify-content: center;
   gap: 1rem;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .detail-wrapper img { 
@@ -17,22 +19,41 @@
   gap: 0.5rem;
 }
 
+.title{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .description  {
   padding-top: 1rem;
   grid-column: span 2;
+  margin-right: 20%;
+  text-align: justify;
 }
 
 .add-to-cart-button { 
-  background-color: white;
+  background-color: var(--color-green);
+  color: white;
   padding: 0.5rem;
   border-radius: var(--border-radius);
-  border: solid 1px black;
+  border: solid 1px var(--color-dark-brown);
+  width: 10rem;
+  margin-left: auto;
 }
 
 .price { 
+  font-size: 1.5rem;
+  color: red;
+  padding-top: 2rem;
   text-align: end;
 }
 
 @media screen and (min-width: 768px) {
-  
+  .detail-wrapper { 
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .description  {
+    margin-right: 40%;
+  }
 }
