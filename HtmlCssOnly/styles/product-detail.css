@@ -1,0 +1,38 @@
+.detail-wrapper { 
+  display: grid;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.detail-wrapper img { 
+  width: 15rem;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: auto;
+}
+
+.product-information { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.description  {
+  padding-top: 1rem;
+  grid-column: span 2;
+}
+
+.add-to-cart-button { 
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: solid 1px black;
+}
+
+.price { 
+  text-align: end;
+}
+
+@media screen and (min-width: 768px) {
+  
+}
