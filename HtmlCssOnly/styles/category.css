@@ -1,0 +1,146 @@
+.category-filters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  list-style: none;
+  padding-bottom: 1rem;
+}
+
+.category-filters li {
+  align-items: center;
+  justify-content: center;
+}
+
+.category-filters li h2 {
+  text-align: center;
+}
+
+.price-range-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.separator {
+  background-color: black;
+  width: 15px;
+  height: 2px;
+  border-radius: 5rem;
+  align-self: center;
+}
+
+.price-ranges {
+  grid-column: span 2;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.price-range-wrapper input {
+  width: 3.5rem;
+  padding: 0.25rem;
+  border: solid 1px black;
+  border-radius: var(--border-radius);
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.select { 
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.products-wrapper {
+  display: grid;
+  justify-self: center;
+  gap: 2rem;
+
+}
+
+.product { 
+  display: grid;
+  gap: 0.5rem;
+  box-shadow: 0.5rem 0.75rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 0.5rem;
+}
+
+.product img { 
+  width: 15rem;
+  height: auto;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.info-wrapper { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+}
+
+.info-wrapper span { 
+  display: grid;
+  gap: 0.5rem;
+}
+
+
+.pages { 
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: var(--page-padding);
+  justify-content: center;
+}
+
+.gt-lt { 
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+}
+
+.page-number { 
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+  background-color: white;
+  border: solid 1px var(--color-brown);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) { 
+  .products-wrapper { 
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .select { 
+    align-self: flex-start;
+    width: 25%;
+  }
+
+  .category-filters { 
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 992px) { 
+  .products-wrapper { 
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .products-wrapper { 
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

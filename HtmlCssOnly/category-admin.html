@@ -6,6 +6,7 @@
     <title>Wtech</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="./styles/category.css" />
+    <link rel="stylesheet" href="./styles/admin.css" />
   </head>
 
   <body>
@@ -75,13 +76,14 @@
     </div>
 
     <main class="main-content">
-      <section>
+      <section class="select-wrapper">
         <select class="select" id="sortBy" name="sortBy">
           <option value="" disabled selected>Sort by</option>
           <option value="apple">Name</option>
           <option value="banana">Price</option>
           <option value="orange">Date</option>
         </select>
+        <button class="add-button">Add</button>
       </section>
       <section class="products-wrapper">
         <article class="product">
