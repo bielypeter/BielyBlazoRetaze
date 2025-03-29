@@ -1,4 +1,4 @@
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,11 +11,11 @@
   margin: auto;
 }
 
-.login-form h2 {
+.register-form h2 {
   margin-bottom: 1.5rem;
 }
 
-.login-form input {
+.register-form input {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -24,11 +24,11 @@
   outline: none;
 }
 
-.login-form input:focus {
+.register-form input:focus {
   border-color: var(--color-pink);
 }
 
-.login-form button {
+.register-form button {
   width: 100%;
   padding: 0.75rem;
   background-color: var(--color-dark-purple);
@@ -39,13 +39,13 @@
   transition: background-color 0.3s;
 }
 
-.login-form button:hover {
+.register-form button:hover {
   background-color: var(--color-light-purple);
   box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
 }
 
-.login-form button:active {
+.register-form button:active {
   background-color: var(--color-purple);
   transform: translateY(1px);
 }
