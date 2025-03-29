@@ -232,9 +232,9 @@ a {
 }
 
 @media screen and (min-width: 768px) {
-.logo{
-  display: flex;
-}
+  .logo{
+    display: flex;
+  }
 
   .header {
     display: flex;
@@ -269,12 +269,12 @@ a {
     gap: 4rem;
     padding-top: calc(var(--header-height) + 1rem);
     padding-left: calc(var(--sideabar-width) + 1rem);
+    padding-right: 1rem;
   }
 
-  
-.categories {
-  flex-direction: column;
-}
+  .categories {
+    flex-direction: column;
+  }
 }
 
 @media screen and (min-width: 992px) {
