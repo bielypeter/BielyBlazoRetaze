@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wtech</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./styles/login.css"/>
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="./index.html"><img src="./assets/logo.svg" class="logo" /></a>
+
+      <input type="text" placeholder="Search" class="search" />
+      <div class="menu-button-wrapper">
+        <button class="logout-button">Login</button>
+        <button class="logout-button">Register</button>
+        <button class="checkout-button"><img src="./assets/checkout-svgrepo-com.svg"/></button>
+      </div>
+    </header>
+
+    <div class="sidebar">
+      <ul class="categories">
+        <li><a href="./category.html" class="category-button">Keyboard</a></li>
+        <li><a href="./category.html" class="category-button">Keycaps</a></li>
+        <li><a href="./category.html" class="category-button">Switches</a></li>
+        <li><a href="./category.html" class="category-button">Case</a></li>
+        <li><a href="./category.html" class="category-button">Accessories</a></li>
+        <li><a href="./category.html" class="category-button">PCB</a></li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <section class="login-form">
+        <h2>Login</h2>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -120,8 +120,8 @@
 .page-number { 
   padding-inline: 0.5rem;
   padding-block: 0.25rem;
-  background-color: var(--color-light-green);
-  border: solid 1px var(--color-brown);
+  background-color: var(--color-light-purple);
+  border: solid 1px var(--color-pink);
   border-radius: 0.5rem;
   font-size: 1rem;
 }
@@ -129,7 +129,7 @@
 .page-number:hover{
   box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
-  background-color: var(--color-green);
+  background-color: var(--color-purple);
 }
 
 @media screen and (min-width: 768px) { 

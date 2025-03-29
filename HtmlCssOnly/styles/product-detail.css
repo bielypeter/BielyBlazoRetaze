@@ -32,11 +32,11 @@
 }
 
 .add-to-cart-button { 
-  background-color: var(--color-green);
+  background-color: var(--color-purple);
   color: white;
   padding: 0.5rem;
   border-radius: var(--border-radius);
-  border: solid 1px var(--color-dark-brown);
+  border: solid 1px var(--color-dark-pink);
   width: 10rem;
   margin-left: auto;
 }
