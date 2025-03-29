@@ -60,7 +60,7 @@ a {
 }
 
 .logo {
-  display: flex;
+  display: none;
   width: 5rem;
   height: auto;
   border-radius: 1rem;
@@ -232,6 +232,10 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+.logo{
+  display: flex;
+}
+
   .header {
     display: flex;
     padding-inline: 2rem;
