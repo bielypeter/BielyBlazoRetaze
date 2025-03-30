@@ -44,6 +44,11 @@ a {
   border-radius: var(--border-radius);
 }
 
+/* When search is clicked, hide the buttons */
+.search:focus + .menu-button-wrapper {
+  display: none;
+}
+
 .header {
   display: flex;
   gap: 1rem;
@@ -274,6 +279,11 @@ a {
 
   .categories {
     flex-direction: column;
+  }
+  
+  /* When search is clicked, the buttons stays showed */
+  .search:focus + .menu-button-wrapper {
+    display: flex;
   }
 }
 
