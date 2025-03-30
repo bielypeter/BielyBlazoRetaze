@@ -63,7 +63,6 @@
   background-color: white;
   color: black;
   font-size: 1rem;
-  appearance: none;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
