@@ -50,6 +50,11 @@
   transform: translateY(1px);
 }
 
+.signup-redirect{
+  padding-top: 1rem;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) {
   .main-content{
     height: 100vh;
