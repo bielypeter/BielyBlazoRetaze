@@ -109,7 +109,7 @@ a {
 }
 
 .checkout-button { 
-  padding: 0.25rem;
+  padding: 0.25rem 0.33rem 0.25rem 0.25rem;
   background-color: var(--color-light-pink);
   color: white;
   border: none;
@@ -195,6 +195,7 @@ a {
   border-radius: 0 0 0.5rem 0.5rem;
   padding: 1rem;
   justify-content: center;
+  height: 100%;
 }
 
 .product img { 
