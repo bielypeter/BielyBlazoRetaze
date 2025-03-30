@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wtech</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./styles/checkout.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="./index.html"><img src="./assets/logo.svg" class="logo" /></a>
+
+      <input type="text" placeholder="Search" class="search" />
+      <div class="menu-button-wrapper">
+        <button class="logout-button">Login</button>
+        <button class="logout-button">Register</button>
+        <button class="checkout-button">
+          <img src="./assets/checkout-svgrepo-com.svg" />
+        </button>
+      </div>
+    </header>
+
+    <div class="sidebar">
+      <ul class="categories">
+        <li><a href="./category.html" class="category-button">Keyboard</a></li>
+        <li><a href="./category.html" class="category-button">Keycaps</a></li>
+        <li><a href="./category.html" class="category-button">Switches</a></li>
+        <li><a href="./category.html" class="category-button">Case</a></li>
+        <li>
+          <a href="./category.html" class="category-button">Accessories</a>
+        </li>
+        <li><a href="./category.html" class="category-button">PCB</a></li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <section class="product-wrapper">
+        <img
+          class="product-image"
+          src="./assets/akkogear-eu-MzyJyxTeebU-unsplash.jpg"
+        />
+        <h2 class="product-name">Name of the product</h2>
+        <div class="product-amount">
+          <button>-</button>
+          <div>1</div>
+          <button>+</button>
+        </div>
+        <p class="price">77,66€</p>
+      </section>
+      <section class="form">
+        <form class="form-form">
+          <div class="pesonal-information">
+            <h2>Personal information</h2>
+            <input type="text" placeholder="First name" required />
+            <input type="text" placeholder="Last name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="text" placeholder="Phone number" required />
+          </div>
+          <div class="delivery-information">
+            <h2>Delivery/Billing information</h2>
+            <input type="text" placeholder="Street" required />
+            <input type="text" placeholder="City" required />
+            <input type="number" placeholder="Postal code" required />
+          </div>
+          <div class="payment-method">
+            <h2>Payment method</h2>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" placeholder="Card" required />
+              <p>Card</p>
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" placeholder="Cash" required />
+              <p>Cash</p>
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" placeholder="Apple pay" required />
+              <p>Apple pay</p>
+            </div>
+          </div>
+          <div class="delivery-method">
+            <h2>Delivery method</h2>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" placeholder="Address" required />
+              <p>Address</p>
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                type="checkbox"
+                placeholder="Personal collection"
+                required
+              />
+              <p>Personal collection</p>
+            </div>
+          </div>
+          <button class="submit-button" type="submit">
+            Confirm information
+          </button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
