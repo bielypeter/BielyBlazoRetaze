@@ -1,0 +1,11 @@
+.select-wrapper { 
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button { 
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border: solid 1px black;
+}

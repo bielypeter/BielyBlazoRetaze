@@ -1,0 +1,148 @@
+.product-wrapper {
+  display: grid;
+  grid-template-areas: "image image" "name price" "amount amount";
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: 0.7rem 0.7rem 0.7rem 0.9rem rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-radius);
+}
+
+.product-image {
+  width: 18.75rem;
+  margin: auto;
+  height: auto;
+  border-radius: 0.5rem;
+  grid-area: image;
+}
+
+.product-amount {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  grid-area: amount;
+  font-size: 2rem;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.product-amount button {
+  background-color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.product-amount div {
+  border: solid 1px black;
+  border-radius: var(--border-radius);
+  padding-inline: 0.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: rgb(22, 100, 50);
+  font-style: italic;
+  grid-area: price;
+  text-align: end;
+}
+
+.product-name {
+  grid-area: name;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
+  margin: auto;
+}
+
+.form h2 {
+  margin-bottom: 1.5rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid grey;
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.form input:focus {
+  border-color: var(--color-pink);
+}
+
+.form button {
+  padding: 0.75rem;
+  background-color: var(--color-dark-purple);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: var(--color-light-purple);
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.form button:active {
+  background-color: var(--color-purple);
+  transform: translateY(1px);
+}
+
+.checkbox-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkbox-wrapper input {
+  width: auto;
+}
+
+.submit-button {
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .form {
+    width: 100%;
+  }
+
+  .form-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .submit-button {
+    grid-column: 2 / 2;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .form {
+    width: 66%;
+  }
+
+  .product-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-image {
+    width: 14rem;
+    margin: 0;
+  }
+}
