@@ -8,12 +8,14 @@
 <main class="main-content">
       <section class="register-form">
         <h2>Register</h2>
-        <form>
-          <input type="text" placeholder="First Name" required>
-          <input type="text" placeholder="Last Name" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <input type="tel" placeholder="Phone number" required>
+        <form method="POST" action="{{ route('register') }}">
+          @csrf
+          <input type="text" name="first_name" placeholder="First Name" required>
+          <input type="text" name="last_name" placeholder="Last Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="phone_number" placeholder="Phone Number">
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
           <button type="submit">Register</button>
         </form>
       </section>

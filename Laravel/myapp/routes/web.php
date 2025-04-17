@@ -10,3 +10,15 @@ Route::view('/category-admin', 'category-admin');
 Route::view('/checkout', 'checkout');
 Route::view('/product-detail', 'product-detail');
 Route::view('/product-detail-admin', 'product-detail-admin');
+
+
+
+use App\Http\Controllers\AuthController;
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

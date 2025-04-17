@@ -14,9 +14,21 @@
         </a>
         <input type="text" placeholder="Search" class="search" />
         <div class="menu-button-wrapper">
-            <a href="{{ url('/login') }}"><button class="login-button">Login</button></a>
-            <a href="{{ url('/register') }}"><button class="register-button">Register</button></a>
-            <a href="{{ url('/checkout') }}"><button class="checkout-button"><img src="{{ asset('assets/checkout-svgrepo-com.svg') }}" alt="Checkout icon"/></button></a>
+            <@guest
+                <a href="{{ route('login') }}"><button class="login-button">Login</button></a>
+                <a href="{{ route('register') }}"><button class="register-button">Register</button></a>
+            @endguest
+            @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="logout-button">Logout</button>
+                </form>
+            @endauth
+            <a href="{{ url('/checkout') }}">
+                <button class="checkout-button">
+                    <img src="{{ asset('assets/checkout-svgrepo-com.svg') }}" alt="Checkout icon"/>
+                </button>
+            </a>
         </div>
     </header>
 
