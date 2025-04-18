@@ -7,115 +7,47 @@
 
 @section('content')
 <main class="main-content">
-      <section>
-        <select class="select" id="sortBy" name="sortBy">
-          <option value="" disabled selected>Sort by</option>
-          <option value="apple">Name</option>
-          <option value="banana">Price</option>
-          <option value="orange">Date</option>
-        </select>
-      </section>
-      <section class="products-wrapper">
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/bin-jaleel-almanza-VKI8S_O-pYg-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/jan-loyde-cabrera-4GzqVNX0TCQ-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/jan-loyde-cabrera-MJ7FfTP2D5Y-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/jan-loyde-cabrera-p5rgceFiOH0-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/jan-loyde-cabrera-Z9W0zM9BBQw-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/theex-studio-ipD2CGhx7iI-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-        <a href="{{ url('/product-detail') }}">
-          <article class="product">
-            <img src="{{ asset('assets/nikita-JzqqSAXYBL8-unsplash.jpg') }}" alt="Image of a keyboard"/>
-            <span class="info-wrapper">
-              <span>
-                <h3>Title</h3>
-                <p>Description</p>
-              </span>
-              <p>Price</p>
-            </span>
-          </article>
-        </a>
-      </section>
-      <section class="pages">
-        <button class="gt-lt">&lt;</button>
-        <div> 
-          <button class="page-number"> 
-            1
-          </button >
-          <button class="page-number"> 
-            2
-          </button>
-          <button class="page-number"> 
-            3
-          </button>
-        </div>
-        <button class="gt-lt">&gt;</button>
+  <h2>{{ $category->name }}</h2>
+  <form method="GET" action="{{ url()->current() }}">
+    {{-- Keep existing filters in hidden inputs, so when we change sort, it doesnt wipe our filters. --}}
+    @foreach(request()->except('sort') as $key => $value)
+        @if(is_array($value))
+            @foreach($value as $v)
+                <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+            @endforeach
+        @else
+            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+        @endif
+    @endforeach
 
+    <section>
+      <select class="select" name="sort" onchange="this.form.submit()">
+        <option value="" disabled {{ request('sort') ? '' : 'selected' }}>Sort by</option>
+        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+        <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price ↑</option>
+        <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price ↓</option>
+      </select>
+    </section>
+  </form>
+      <section class="products-wrapper">
+    @forelse ($products as $product)
+        <article class="product">
+            <img src="{{ asset('assets/products/' . json_decode($product->image_path)[0]) }}" alt="{{ $product->name }}">
+            <span class="info-wrapper">
+                <span>
+                    <h3>{{ $product->name }}</h3>
+                    <p>{{ $product->description }}</p>
+                </span>
+                <p>{{ $product->price }} €</p>
+            </span>
+        </article>
+    @empty
+        <p>No products in this category.</p>
+    @endforelse
       </section>
+      <div class="pagination-wrapper">
+        {{ $products->links('vendor.pagination.custom_pagination') }}
+      </div>
+      
     </main>
 @endsection

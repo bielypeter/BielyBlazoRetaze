@@ -6,6 +6,15 @@
 
 @section('content')
 <main class="main-content">
+      @if ($errors->any())
+          <div class="error-box">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
       <section class="login-form">
         <h2>Login</h2>
         <form method="POST" action="{{ route('login') }}">

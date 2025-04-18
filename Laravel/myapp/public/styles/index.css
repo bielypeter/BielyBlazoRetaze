@@ -37,6 +37,12 @@ a {
   padding-top: 2rem;
 }
 
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .search {
   height: 1rem;
   width: 97%;
@@ -282,6 +288,18 @@ a {
   justify-content: center;
 }
 
+.error-box {
+  background-color: #ffe0e0;
+  border: 1px solid #ff7a7a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  color: #b30000;
+  font-weight: bold;
+  margin:auto;
+}
+
+
 @media screen and (min-width: 768px) {
   .register-button {
     display: flex;
@@ -291,10 +309,6 @@ a {
     display: flex;
     padding-inline: 2rem;
     justify-content: space-between;
-  }
-
-  .search { 
-    width: 25%;
   }
 
   .sidebar {
@@ -334,6 +348,9 @@ a {
 }
 
 @media screen and (min-width: 992px) {
+  .search { 
+    width: 20rem;
+  }
   .images {
     grid-template-columns: repeat(3, 1fr);
   }
