@@ -31,6 +31,7 @@
   </form>
       <section class="products-wrapper">
     @forelse ($products as $product)
+      <a href="{{ route('product.detail', $product->id) }}" class="product-link">
         <article class="product">
             <img src="{{ asset('assets/products/' . json_decode($product->image_path)[0]) }}" alt="{{ $product->name }}">
             <span class="info-wrapper">
@@ -41,6 +42,8 @@
                 <p>{{ $product->price }} €</p>
             </span>
         </article>
+    </a>
+  
     @empty
         <p>No products in this category.</p>
     @endforelse

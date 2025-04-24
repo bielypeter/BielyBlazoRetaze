@@ -40,3 +40,26 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
+
+use App\Http\Controllers\ProductController;
+
+Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('product.detail');
+
+use Illuminate\Http\Request;
+
+Route::post('/product-detail/{id}/quantity', function (Request $request, $id) {
+    $qty = max((int) $request->input('quantity'), 1); 
+    session(['last_quantity' => $qty]);
+    return redirect()->route('product.detail', $id);
+})->name('product.quantity.update');
+
+
+
+use App\Http\Controllers\CheckoutController;
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/cart/add/{productId}', [CheckoutController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update/{productId}', [CheckoutController::class, 'updateQuantity'])->name('cart.update');
+Route::delete('/cart/remove/{productId}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+
