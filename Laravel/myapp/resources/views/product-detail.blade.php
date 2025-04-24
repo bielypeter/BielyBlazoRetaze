@@ -74,7 +74,7 @@
         </div>
 
         <div class="wrapper-wrapper">
-            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+            <form action="{{ route('cart.add', $product->id) }}" method="POST"  class="wrapper-wrapper">
                 @csrf
                 <div class="product-amount">
                     <button type="button" onclick="changeQuantity(-1)">-</button>
