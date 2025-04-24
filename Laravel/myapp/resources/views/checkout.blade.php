@@ -14,15 +14,12 @@
 
         <h2 class="product-name">{{ $product->name }}</h2>
 
-        {{-- Quantity Form --}}
         <form action="{{ route('cart.update', $product->id) }}" method="POST" class="product-amount">
             @csrf
-            <button type="submit" name="quantity" value="{{ max(1, $product->pivot->quantity - 1) }}">-</button>
+            <button type="submit" name="quantity" value="{{ $product->pivot->quantity - 1 }}">-</button>
             <div>{{ $product->pivot->quantity }}</div>
             <button type="submit" name="quantity" value="{{ $product->pivot->quantity + 1 }}">+</button>
         </form>
-
-        {{-- Remove from Cart --}}
         <form action="{{ route('cart.remove', $product->id) }}" method="POST">
             @csrf
             @method('DELETE')
@@ -35,13 +32,11 @@
         <p>No items in your cart.</p>
     @endforelse
 
-    {{-- Checkout Form --}}
     @if ($products->count())
     <section class="form">
         <form action="{{ route('checkout.process') }}" method="POST" class="form-form">
             @csrf
 
-            {{-- Personal Info --}}
             <div class="pesonal-information">
                 <h2>Personal information</h2>
                 <input type="text" name="first_name" placeholder="First name"
@@ -57,7 +52,6 @@
                     value="{{ old('phone_number', $user->phone_number ?? '') }}" required />
             </div>
 
-            {{-- Delivery Info --}}
             <div class="delivery-information">
                 <h2>Delivery/Billing information</h2>
                 <input type="text" name="street" placeholder="Street"
@@ -70,7 +64,6 @@
                     value="{{ old('postalcode') }}" required />
             </div>
 
-            {{-- Payment --}}
             <div class="payment-method">
                 <h2>Payment method</h2>
                 @foreach(['card', 'cash', 'apple pay'] as $method)
@@ -82,7 +75,6 @@
                 @endforeach
             </div>
 
-            {{-- Delivery --}}
             <div class="delivery-method">
                 <h2>Delivery method</h2>
                 @foreach(['address', 'personal collection'] as $method)

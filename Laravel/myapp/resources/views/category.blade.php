@@ -9,7 +9,6 @@
 <main class="main-content">
   <h2>{{ $category->name }}</h2>
   <form method="GET" action="{{ url()->current() }}">
-    {{-- Keep existing filters in hidden inputs, so when we change sort, it doesnt wipe our filters. --}}
     @foreach(request()->except('sort') as $key => $value)
         @if(is_array($value))
             @foreach($value as $v)

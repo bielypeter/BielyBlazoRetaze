@@ -9,29 +9,32 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function show($id)
-    {
-        $product = Product::findOrFail($id);
-        $quantity = session('last_quantity', 1); // default to 1
+{
+    $product = Product::findOrFail($id);
 
-        return view('product-detail', compact('product', 'quantity'));
-    }
+    $quantity = 1;
+
+    return view('product-detail', compact('product', 'quantity'));
+}
 
 
 
-    public function updateQuantity($id)
-    {
-        $key = "quantity_$id";
-        $quantity = session($key, 1);
 
-        if (request('action') === 'increase') {
-            $quantity++;
-        } elseif (request('action') === 'decrease' && $quantity > 1) {
-            $quantity--;
+
+    public function updateQuantity(Request $request, $id)
+        {
+            $current = (int) $request->input('quantity', 1);
+            $action = $request->input('action');
+        
+            if ($action === 'increment') {
+                $current++;
+            } elseif ($action === 'decrement') {
+                $current = max(1, $current - 1);
+            }
+        
+            session(['product_quantity_' . $id => $current]);
+        
+            return redirect()->route('product.detail', $id);
         }
-
-        session([$key => $quantity]);
-
-        return redirect()->back();
-    }
 
 }

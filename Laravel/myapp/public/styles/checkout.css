@@ -114,6 +114,28 @@
   margin-top: 2rem;
 }
 
+.remove-button { 
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-light-pink);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+}
+
+.remove-button:hover { 
+  background-color: var(--color-pink);
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.remove-button:active { 
+  background-color: var(--color-dark-pink);
+  transform: translateY(1px);
+}
+
 @media screen and (min-width: 992px) {
   .form {
     width: 100%;

@@ -50,27 +50,32 @@ class CheckoutController extends Controller
 
     public function updateQuantity(Request $request, $productId)
     {
-        $quantity = max((int) $request->input('quantity', 1), 0);
-
+        $quantity = (int) $request->input('quantity', 1);
+    
         if (Auth::check()) {
             $cart = Auth::user()->cart ?? Auth::user()->cart()->create();
-            if ($quantity === 0) {
+    
+            if ($quantity < 1) {
                 $cart->products()->detach($productId);
             } else {
                 $cart->products()->updateExistingPivot($productId, ['quantity' => $quantity]);
             }
+    
         } else {
             $guestCart = session()->get('guest_cart', []);
-            if ($quantity === 0) {
+    
+            if ($quantity < 1) {
                 unset($guestCart[$productId]);
             } else {
                 $guestCart[$productId] = $quantity;
             }
+    
             session()->put('guest_cart', $guestCart);
         }
-
+    
         return redirect()->route('checkout');
     }
+    
 
     public function removeFromCart($productId)
     {

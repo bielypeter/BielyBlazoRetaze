@@ -44,16 +44,7 @@ Route::get('/', [HomeController::class, 'index']);
 use App\Http\Controllers\ProductController;
 
 Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('product.detail');
-
-use Illuminate\Http\Request;
-
-Route::post('/product-detail/{id}/quantity', function (Request $request, $id) {
-    $qty = max((int) $request->input('quantity'), 1); 
-    session(['last_quantity' => $qty]);
-    return redirect()->route('product.detail', $id);
-})->name('product.quantity.update');
-
-
+Route::post('/product-detail/{id}', [ProductController::class, 'updateQuantity'])->name('product.quantity.update');
 
 use App\Http\Controllers\CheckoutController;
 
