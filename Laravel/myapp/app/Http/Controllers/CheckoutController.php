@@ -100,7 +100,7 @@ class CheckoutController extends Controller
             'phone_number' => 'required|string',
             'street' => 'required|string',
             'city' => 'required|string',
-            'postalcode' => 'required|numeric',
+            'postalcode' => 'required|string',
             'payment_method' => 'required|string',
             'delivery_method' => 'required|string',
         ]);

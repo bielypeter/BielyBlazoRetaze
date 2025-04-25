@@ -73,7 +73,7 @@
                     value="{{ old('street') }}" required />
                 <input type="text" name="city" placeholder="City"
                     value="{{ old('city') }}" required />
-                <input type="number" name="postalcode" placeholder="Postal code"
+                <input type="text" name="postalcode" placeholder="Postal code"
                     value="{{ old('postalcode') }}" required />
             </div>
 
