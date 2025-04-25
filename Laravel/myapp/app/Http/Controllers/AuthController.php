@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +19,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            $this->mergeGuestCart(Auth::user(), $request);
+
             return redirect('/');
         }
 
@@ -36,16 +40,20 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
-            'role' => 'user', //default role
+            'role' => 'user',
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/login')->with('success', 'Account created. Please login.');
+        Auth::login($user);
+
+        $this->mergeGuestCart($user, $request);
+
+        return redirect('/')->with('success', 'Account created and logged in.');
     }
 
     public function logout(Request $request) {
@@ -53,5 +61,27 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    private function mergeGuestCart(User $user, Request $request) {
+        $guestCart = $request->session()->get('guest_cart', []);
+
+        if (!empty($guestCart)) {
+            $cart = $user->cart ?? $user->cart()->create();
+
+            foreach ($guestCart as $productId => $quantity) {
+                $existing = $cart->products()->where('product_id', $productId)->first();
+
+                if ($existing) {
+                    $cart->products()->updateExistingPivot($productId, [
+                        'quantity' => $existing->pivot->quantity + $quantity
+                    ]);
+                } else {
+                    $cart->products()->attach($productId, ['quantity' => $quantity]);
+                }
+            }
+
+            $request->session()->forget('guest_cart');
+        }
     }
 }
