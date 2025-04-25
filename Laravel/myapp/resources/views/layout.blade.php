@@ -42,9 +42,9 @@
                 <li class="price-ranges">
                     <h2>Price range</h2>
                     <span class="price-range-wrapper">
-                        <input name="min" placeholder="Min" value="{{ request('min') }}" />
+                        <input type="number" name="min" placeholder="Min" value="{{ request('min') }}" />
                         <div class="separator"></div>
-                        <input name="max" placeholder="Max" value="{{ request('max') }}" />
+                        <input type="number" name="max" placeholder="Max" value="{{ request('max') }}" />
                     </span>
                 </li>
                 <li class="filter-list">
