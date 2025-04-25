@@ -21,7 +21,11 @@
              src="{{ asset('assets/products/' . json_decode($product->image_path)[0]) }}"
              alt="{{ $product->name }}" />
 
-        <h2 class="product-name">{{ $product->name }}</h2>
+            <h2 class="product-name">
+                <a href="{{ route('product.detail', $product->id) }}">
+                    {{ $product->name }}
+                </a>
+            </h2>
 
         <form action="{{ route('cart.update', $product->id) }}" method="POST" class="product-amount">
             @csrf
