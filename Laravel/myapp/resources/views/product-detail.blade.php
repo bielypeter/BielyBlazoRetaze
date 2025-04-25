@@ -96,10 +96,11 @@
                  alt="Gallery image" />
 
             <div class="gallery-thumbnails">
-                @for ($i = 0; $i < 4; $i++)
-                    <img src="{{ asset('assets/products/' . json_decode($product->image_path)[0]) }}"
-                         onclick="switchGalleryImage(this)" />
-                @endfor
+                @foreach (json_decode($product->image_path) as $image)
+                    <img src="{{ asset('assets/products/' . $image) }}"
+                        onclick="switchGalleryImage(this)"
+                        alt="Gallery thumbnail" />
+                @endforeach
             </div>
         </div>
     </div>
