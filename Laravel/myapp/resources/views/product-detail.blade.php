@@ -54,6 +54,136 @@
             color: #333;
             cursor: pointer;
         }
+        
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+
+        .modal .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal button.danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .admin-form label {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+
+        .admin-form input,
+        .admin-form textarea {
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .admin-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .save-button {
+            margin-top: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .save-button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button {
+            margin-top: 1rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        .delete-button:disabled {
+            background-color: #ccc;
+            color: #666;
+            border: none;
+            cursor: not-allowed;
+        }
+
+        .admin-image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .image-item img {
+            width: 100px;
+            height: auto;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+
     </style>
 @endpush
 
@@ -61,6 +191,70 @@
 
 @section('content')
 <main class="main-content">
+    @auth
+        @if (Auth::user()->role === 'admin')
+            <button class="edit" onclick="document.getElementById('editModal').style.display = 'flex'">Edit</button>
+
+            <div id="editModal" class="modal-overlay">
+                <div class="modal">
+                    <button onclick="document.getElementById('editModal').style.display = 'none'" class="close">&times;</button>
+                    <h2>Edit Product</h2>
+
+                    <form method="POST" action="{{ route('product.update', $product->id) }}" class="admin-form">
+                        @csrf
+                        @method('PUT')
+
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="{{ $product->name }}" required />
+
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required>{{ $product->description }}</textarea>
+
+                        <label for="price">Price (€):</label>
+                        <input type="number" id="price" name="price" value="{{ $product->price }}" step="0.01" required />
+                        
+                        <button type="submit" class="save-button">Save Changes</button>
+                    </form>
+                    <h3>Images</h3>
+                    <div class="admin-image-grid">
+                        @php $images = json_decode($product->image_path); @endphp
+                        @foreach ($images as $index => $image)
+                            <div class="image-item">
+                                <img src="{{ asset('assets/products/' . $image) }}" alt="Image {{ $index }}" />
+                                
+                                @if (count($images) > 1)
+                                    <form method="POST" action="{{ route('product.image.delete', [$product->id, $index]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="delete-button">Remove</button>
+                                    </form>
+                                @else
+                                    <button class="delete-button" disabled style="opacity: 0.5; cursor: not-allowed;">
+                                        Cannot remove last image
+                                    </button>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <form method="POST" action="{{ route('product.image.upload', $product->id) }}" enctype="multipart/form-data">
+                        @csrf
+                        <label for="new_images">Upload New Images:</label>
+                        <input type="file" name="new_images[]" multiple accept="image/*" required />
+                        <button type="submit" class="save-button">Upload</button>
+                    </form>
+
+                    <form method="POST" action="{{ route('product.destroy', $product->id) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button">Delete Product</button>
+                    </form>
+
+                </div>
+            </div>
+        @endif
+    @endauth
+
     <section class="detail-wrapper">
         <img src="{{ asset('assets/products/' . json_decode($product->image_path)[0]) }}"
              alt="{{ $product->name }}"

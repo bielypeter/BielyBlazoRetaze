@@ -6,10 +6,10 @@ Route::view('/', 'home');
 Route::view('/login', 'login');
 Route::view('/register', 'register');
 Route::view('/category', 'category');
-Route::view('/category-admin', 'category-admin');
+//Route::view('/category-admin', 'category-admin');
 Route::view('/checkout', 'checkout');
 Route::view('/product-detail', 'product-detail');
-Route::view('/product-detail-admin', 'product-detail-admin');
+//Route::view('/product-detail-admin', 'product-detail-admin');
 
 
 
@@ -45,6 +45,11 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('product.detail');
 Route::post('/product-detail/{id}', [ProductController::class, 'updateQuantity'])->name('product.quantity.update');
+Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::post('/product/{id}/images', [ProductController::class, 'uploadImages'])->name('product.image.upload');
+Route::delete('/product/{id}/images/{index}', [ProductController::class, 'deleteImage'])->name('product.image.delete');
+Route::post('/product/store/{category}', [ProductController::class, 'store'])->name('product.store');
 
 use App\Http\Controllers\CheckoutController;
 
