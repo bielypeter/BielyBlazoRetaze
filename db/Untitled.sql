@@ -20,15 +20,17 @@ CREATE TABLE "user" (
   "first_name" varchar,
   "last_name" varchar,
   "email" varchar,
-  "phone_number" integer,
+  "phone_number" varchar,
   "password" varchar,
-  "created_at" timestamp
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "category" (
   "id" integer PRIMARY KEY,
   "name" varchar,
-  "created_at" timestamp
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "products_category" (
@@ -45,13 +47,15 @@ CREATE TABLE "product" (
   "image_path" varchar[],
   "color" varchar,
   "brand" varchar,
-  "created_at" timestamp
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "cart" (
   "id" integer PRIMARY KEY,
   "user_id" integer,
-  "created_at" timestamp
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "cart_product" (
@@ -68,15 +72,21 @@ CREATE TABLE "order" (
   "total_price" integer,
   "delivery_method" order_delivery_method,
   "payment_method" order_payment_method,
-  "created_at" timestamp
+  "first_name" varchar,
+  "last_name" varchar,
+  "email" varchar,
+  "phone_number" varchar,
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "address" (
   "id" integer PRIMARY KEY,
   "street" varchar,
   "city" varchar,
-  "postalcode" integer,
-  "created_at" timestamp
+  "postalcode" varchar,
+  "created_at" timestamp,
+  "updated_at" timestamp
 );
 
 CREATE TABLE "order_product" (
