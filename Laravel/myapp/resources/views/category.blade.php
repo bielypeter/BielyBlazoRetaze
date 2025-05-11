@@ -113,7 +113,7 @@
         <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price ↓</option>
       </select>
       @auth
-          @if (Auth::user()->role === 'admin')
+          @if (Auth::user()->role === 'admin' && isset($category) && isset($category->id))
             <button type="button" class="add-button" onclick="document.getElementById('addProductModal').style.display = 'flex'">Add Product</button>
           @endif
       @endauth
@@ -141,7 +141,7 @@
       <div class="pagination-wrapper">
         {{ $products->links('vendor.pagination.custom_pagination') }}
       </div>
-      
+      @if (isset($category) && isset($category->id))
       <div id="addProductModal" class="modal-overlay" style="display: none;">
         <div class="modal">
             <button type="button" onclick="document.getElementById('addProductModal').style.display = 'none'" class="close">&times;</button>
@@ -197,6 +197,7 @@
                 <button type="submit" class="save-button">Create Product</button>
             </form>
         </div>
+        @endif
     </div>
 
 
